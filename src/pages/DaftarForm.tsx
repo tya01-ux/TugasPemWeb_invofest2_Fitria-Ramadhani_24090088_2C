@@ -3,8 +3,7 @@ import { InputText } from "../components/ui/InputText";
 import { InputPassword } from "../components/ui/InputPassword";
 import Button from "../components/ui/Button";
 import { Select } from "../components/ui/Select";
-import { TextArea } from "../components/ui/TextArea";
-
+import { Textarea } from "../components/ui/Textarea";
 
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +15,8 @@ type FormData = {
     email: string;
     password: string;
     passwordConfirm: string;
+    bio: string;
+    event: string;
 };
 
 const schema = z.object({
@@ -23,6 +24,8 @@ const schema = z.object({
     email: z.string().email({ message: "Email tidak valid" }),
     password: z.string().min(6, { message: "Password harus minimal 6 karakter" }),
     passwordConfirm: z.string().min(6, { message: "Konfirmasi Password harus minimal 6 karakter" }),
+    bio: z.string().min(1, "Biodata wajib diisi"), 
+    event: z.string().min(1, "Event wajib dipilih"),
 });
 
 export default function RegisterForm() {
@@ -59,11 +62,12 @@ export default function RegisterForm() {
                 register={register}
                 />
                 
-                 <TextArea 
-                label="Bio" 
-                name="bio" 
-                register={register} 
-                 /> 
+                <Textarea
+                label="Biodata Singkat"
+                name="bio"
+                register={register}
+                error={errors.bio?.message}
+                /> 
         
                 <Select 
                 label="Event" 
