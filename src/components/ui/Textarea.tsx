@@ -1,4 +1,4 @@
-interface TextareaProps { 
+interface TextAreaProps { 
   label: string; 
   name: string; 
   register: any; 
@@ -6,7 +6,7 @@ interface TextareaProps {
   placeholder?: string; 
 } 
  
-export const Textarea: React.FC<TextareaProps> = ({ 
+export const TextArea: React.FC<TextAreaProps> = ({ 
   label, 
   name, 
   register, 

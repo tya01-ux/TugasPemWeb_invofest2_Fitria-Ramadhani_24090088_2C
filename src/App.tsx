@@ -1,6 +1,6 @@
 import LoginForm from "./pages/LoginForm";
 import RegisterForm from "./pages/RegisterForm";
-import DaftarFrom from"./pages/DaftarFrom";
+import DaftarFrom from"./pages/DaftarForm";
 
 function App() {
   return (

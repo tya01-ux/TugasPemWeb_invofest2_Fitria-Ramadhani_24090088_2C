@@ -3,7 +3,7 @@ import { InputText } from "../components/ui/InputText";
 import { InputPassword } from "../components/ui/InputPassword";
 import Button from "../components/ui/Button";
 import { Select } from "../components/ui/Select";
-import { Textarea } from "../components/ui/TextArea";
+import { TextArea } from "../components/ui/TextArea";
 
 
 
@@ -59,7 +59,7 @@ export default function RegisterForm() {
                 register={register}
                 />
                 
-                 <Textarea 
+                 <TextArea 
                 label="Bio" 
                 name="bio" 
                 register={register} 
