@@ -11,13 +11,14 @@ export const Button: React.FC<ButtonProps> = ({
   className,
 }) => {
   const baseStyle =
-    "px-10 py-3 rounded font-medium transition-all duration-200";
+    "px-10 py-3 rounded-xl font-medium transition-all duration-200";
   const variantStyle =
   variant === "primary"
     ? "bg-red-800 text-white hover:bg-red-700"
     : "border border-red-800 text-red-800";
   return (
-    <button className={`${baseStyle} ${variantStyle} ${className}`}>
+    <button 
+    className={`${baseStyle} ${variantStyle} ${className}`}>
       {label}
     </button>
   );

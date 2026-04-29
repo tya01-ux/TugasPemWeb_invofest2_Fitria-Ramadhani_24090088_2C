@@ -1,0 +1,23 @@
+import { Outlet } from "react-router-dom";
+
+export default function AuthLayout() {
+    return (
+        <div className="grid grid-cols-2 items-center min-h-screen">
+            {/*kiri*/}
+            <div className="bg-pink-100 h-screen flex items-center justify-center">
+                <img
+                    src="https://www.invofest-harkatnegeri.com/assets/text-image.png"
+                    alt=""
+                    className="w-96"
+                />
+            </div>
+
+
+
+            {/*kanan*/}
+            <div className="p-6 flex flex-col gap-6 justify-center">
+                <Outlet />
+            </div>
+        </div>
+    )
+}

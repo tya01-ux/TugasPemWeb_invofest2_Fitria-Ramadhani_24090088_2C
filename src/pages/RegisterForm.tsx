@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { InputText } from "../components/ui/InputText";
 import { InputPassword } from "../components/ui/InputPassword";
 import Button from "../components/ui/Button";
-
+import { Link } from "react-router-dom";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -67,6 +67,11 @@ export default function RegisterForm() {
             <div>
                 <Button label="Register" variant="primary"/>
             </div>
+
+            <div>
+                sudah punya akun? <Link to="/login" className="text-sm text-blue-500 hover:underline">Login disini</Link>
+            </div>
+    
         </form>
     </div>
 }

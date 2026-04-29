@@ -1,26 +1,33 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginForm from "./pages/LoginForm";
+import Homepage from "./pages/Homepage";
+import Seminar from "./pages/Seminar";
+import Talkshow from "./pages/Talkshow";
+import Workshop from "./pages/Workshop";
+import Competition from "./pages/Competition";
+import MainLayout from "./layouts/MainLayout";
+import AuthLayout from "./layouts/AuthLayout";
 import RegisterForm from "./pages/RegisterForm";
-import DaftarFrom from"./pages/DaftarForm";
 
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="grid grid-cols-2 gap-20 w-full max-w-6xl px-10">
-        
-        <div>
-          <LoginForm />
-        </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/competition" element={<Competition />} />
+          <Route path="/seminar" element={<Seminar />} />
+          <Route path="/talkshow" element={<Talkshow />} />
+          <Route path="/workshop" element={<Workshop />} />
+        </Route>
 
-        <div>
-          <RegisterForm />
-        </div>
-          <DaftarFrom />
-        <div>
-
-        </div>
-
-      </div>
-    </div>
+        {/* route di luar layout */}
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<RegisterForm />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

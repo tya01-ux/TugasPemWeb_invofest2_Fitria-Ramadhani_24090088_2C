@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { InputText } from "../components/ui/InputText";
 import { InputPassword } from "../components/ui/InputPassword";
+import { Link } from "react-router-dom";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -46,6 +47,10 @@ export default function LoginForm() {
 
             <div>
                 <Button label="Login" variant="primary"/>
+            </div>
+
+            <div>
+                Belum Punya Akun? <Link to="/register" className="text-sm text-blue-500 hover:underline">Daftar disini</Link>
             </div>
         </form>
     </div>
