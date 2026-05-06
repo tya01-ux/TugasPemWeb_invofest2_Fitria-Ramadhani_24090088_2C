@@ -1,15 +1,17 @@
 import { useForm } from "react-hook-form";
 import { InputText } from "../components/ui/InputText";
 import { InputPassword } from "../components/ui/InputPassword";
-import { Link } from "react-router-dom";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Button } from "../components/ui/Button";
+import { z } from "zod";
+import Button from "../components/ui/Button";
+import { Link, useNavigate } from "react-router-dom";
+
+import { useAuthStore } from "../store/useAuthStore";
 
 const schema = z.object({
-    email: z.string().email({ message: "Email tidak valid" }),
-    password: z.string().min(6, { message: "Password harus minimal 6 karakter" }),
+    email: z.string().email({ message: "Email harus diisi dengan benar" }),
+    password: z.string().min(8, { message: "Password minimal 8 karakter" })
 });
 
 interface FormData {
@@ -18,40 +20,62 @@ interface FormData {
 }
 
 export default function LoginForm() {
-    const{register, handleSubmit, formState:{errors}} = useForm<FormData>({
-        resolver: zodResolver(schema),
+    const navigate = useNavigate();
+    const login = useAuthStore((state) => state.login)
+
+    // const [email, setEmail] = useState<string>("");
+    // const [password, setPassword] = useState<string>("");
+    const { register, handleSubmit, formState: { errors },
+    } = useForm<FormData>({
+        resolver: zodResolver(schema)
     });
+
 
     const onSubmit = (data: FormData) => {
         console.log(data);
+        if(data.email == "dindafitria283@gmail.com" && data.password == "admin123"){
+            alert("Login Berhasil");
+
+            login(data.email);
+
+        // Redirect ke halaman dashboard
+        navigate("/dashboard");
+        } else {
+            alert("Email atau password anda salah!");
+        }
+
     };
 
 
-    return <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
+    return (
+        <div>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <InputText
-                label="Email"
-                nama="email"
-                error={errors.email?.message}
-                register={register}
+                    label="Email"
+                    nama="email"
+                    register={register}
+                    error={errors.email?.message}
                 />
 
                 <InputPassword
-                label="Password"
-                nama="password"
-                error={errors.password?.message}
-                register={register}
+                    label="Password"
+                    nama="password"
+                    register={register}
+                    error={errors.password?.message}
                 />
-            </div>
 
-            <div>
-                <Button label="Login" variant="primary"/>
-            </div>
 
-            <div>
-                Belum Punya Akun? <Link to="/register" className="text-sm text-blue-500 hover:underline">Daftar disini</Link>
-            </div>
-        </form>
-    </div>
+                <div>
+                    <Button label="Login" variant="primary"/>
+                </div>
+
+                <div>
+                    Belum punya akun? <Link to="/register">Daftar Disini</Link>
+                </div>
+            </form>
+            {/* <div style={{marginTop: "80px"}}>
+                <DaftarForm/>
+            </div> */}
+        </div>
+    );
 }

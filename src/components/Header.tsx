@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
     { label: "Competition", href: "/competition", icon: <Info size={18} /> },
     { label: "Seminar", href: "/seminar", icon: <Users size={18} /> },
     { label: "Workshop", href: "/workshop", icon: <HelpCircle size={18} /> },
-    { label: "Talkshow", href: "/talkshow", icon: <HelpCircle size={18} /> },    
+    { label: "Talkshow", href: "/talkshow", icon: <HelpCircle size={18} /> },
 
   ];
 
@@ -52,7 +52,6 @@ export const Header: React.FC = () => {
               <UserCircle size={18} />
             </span>
           </NavLink>
-
         </div>
       </div>
     </header>
